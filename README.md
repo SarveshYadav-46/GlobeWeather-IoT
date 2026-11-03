@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌍 GlobeWeather – Interactive Globe Weather Information System
 
 A full-stack IoT project featuring a **3D interactive Earth globe** with real-time weather data and **Arduino Uno + 16×2 I2C LCD** display integration.
@@ -180,3 +181,7 @@ LONDON|UNITED KINGDOM|18|3|72|14\n
 - **Backend**: Node.js, Express, Axios, SerialPort
 - **Hardware**: Arduino Uno, 16×2 I2C LCD, LiquidCrystal_I2C library
 - **APIs**: Open-Meteo (weather + geocoding), BigDataCloud (reverse geocoding)
+=======
+# GlobeWeather-IoT
+An IoT-based weather monitoring system using Arduino UNO, LCD display, LED indicators, and a web-based GlobeWeather dashboard to display real-time weather information and device connectivity status.
+>>>>>>> a47cd540c64f7130511d00141920a5f0e6973cec
