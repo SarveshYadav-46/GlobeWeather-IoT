@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;600;700;900&display=swap');
+@import "tailwindcss";
+
+/* ── Design tokens ──────────────────────────────────────────────────────────── */
+:root {
+  --bg-primary:    #020817;
+  --bg-secondary:  #0d1b2e;
+  --bg-card:       rgba(13, 27, 46, 0.7);
+  --accent-blue:   #3b82f6;
+  --accent-cyan:   #06b6d4;
+  --accent-purple: #8b5cf6;
+  --accent-green:  #10b981;
+  --accent-amber:  #f59e0b;
+  --text-primary:  #f1f5f9;
+  --text-muted:    #94a3b8;
+  --border:        rgba(59, 130, 246, 0.15);
+  --glow-blue:     0 0 20px rgba(59, 130, 246, 0.3);
+  --glow-cyan:     0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+body {
+  background: radial-gradient(ellipse at 20% 20%, rgba(59,130,246,0.05) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 80%, rgba(139,92,246,0.05) 0%, transparent 50%),
+              var(--bg-primary);
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--accent-blue); border-radius: 3px; }
+
+/* ── Glassmorphism card ──────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(13, 27, 46, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.glass-strong {
+  background: rgba(13, 27, 46, 0.85);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(59,130,246,0.25);
+  border-radius: 16px;
+}
+
+/* ── Glow effects ────────────────────────────────────────────────────────────── */
+.glow-blue  { box-shadow: var(--glow-blue); }
+.glow-cyan  { box-shadow: var(--glow-cyan); }
+.glow-text  { text-shadow: 0 0 20px rgba(59,130,246,0.6); }
+.glow-text-cyan { text-shadow: 0 0 20px rgba(6,182,212,0.6); }
+
+/* ── Gradient text ───────────────────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Animations ──────────────────────────────────────────────────────────────── */
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.animate-float      { animation: float 3s ease-in-out infinite; }
+.animate-spin-slow  { animation: spin-slow 20s linear infinite; }
+
+/* ── Marker pulse ────────────────────────────────────────────────────────────── */
+.marker-dot {
+  width: 12px;
+  height: 12px;
+  background: #3b82f6;
+  border-radius: 50%;
+  position: relative;
+}
+
+.marker-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #3b82f6;
+  animation: pulse-ring 1.5s ease-out infinite;
+}
+
+/* ── Dropdown ─────────────────────────────────────────────────────────────────── */
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 100;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* ── Status badge ─────────────────────────────────────────────────────────────── */
+.status-connected    { color: #10b981; }
+.status-disconnected { color: #ef4444; }
+
+/* ── Weather icon ─────────────────────────────────────────────────────────────── */
+.weather-icon-large {
+  font-size: 4rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+/* ── Stat card ────────────────────────────────────────────────────────────────── */
+.stat-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: all 0.2s ease;
+}
+
+.stat-card:hover {
+  background: rgba(59,130,246,0.08);
+  border-color: rgba(59,130,246,0.25);
+  transform: translateY(-2px);
+}
+
+/* ── Navbar ───────────────────────────────────────────────────────────────────── */
+.nav-link {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--text-primary);
+  background: rgba(59,130,246,0.1);
+}
+
+/* ── Scrollbar in dropdowns ───────────────────────────────────────────────────── */
+.search-dropdown::-webkit-scrollbar { width: 4px; }
+.search-dropdown::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.4); }
+
+/* ── Loading skeleton ─────────────────────────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+  background-size: 200% auto;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
